@@ -1,4 +1,4 @@
-image: java:8
+image: openjdk:8-jdk-alpine
 
 stages:
   - build
