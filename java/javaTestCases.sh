@@ -4,5 +4,6 @@
 scriptPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 #COMMAND="java  -cp ${scriptPath}/lib/*:${scriptPath}/EBeye_JAXRS.jar uk.ac.ebi.webservices.jaxrs.EBeyeClient"
 COMMAND="java -Djava.ext.dirs=${scriptPath}/lib/"
+ls ${scriptPath}
 echo $COMMAND
 $COMMAND
