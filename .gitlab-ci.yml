@@ -1,4 +1,4 @@
-image: java:latest
+image: openjdk:8
 
 stages:
   - build
