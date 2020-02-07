@@ -21,5 +21,7 @@ test_perl_client:
 test_python_client:
   image: python:latest
   stage: test
+  before_script:
+  - pip install requests
   script:
-    -  python python/ebeye_requests.py getEntries uniprot "Q9GZU1,P80567"  "acc,organism_scientific_name" | grep -c 'Q9GZU1\|D6W647\|Homo sapiens\|Bacillus cereus'; [ $? -eq 1 ]  || exit 1
+  -  python python/ebeye_requests.py getEntries uniprot "Q9GZU1,P80567"  "acc,organism_scientific_name" | grep -c 'Q9GZU1\|D6W647\|Homo sapiens\|Bacillus cereus'; [ $? -eq 1 ]  || exit 1
