@@ -13,5 +13,6 @@ test_perl_client:
   stage: test
   before_script:
   - perl -MCPAN -e 'install Bundle::LWP'
+  - perl -MCPAN -e 'install XML::Simple'
   script:
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
