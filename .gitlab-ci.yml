@@ -1,15 +1,15 @@
-image: openjdk:8
-
 stages:
-  - build
+  - test
 
-build:
-  stage: build
+test_java_client:
+  image: openjdk:8
+  stage: test
   script:
   - java -classpath "java/lib/*:java/jar/eby-client.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getNumberOfResults hgnc human --endpoint http://www.ebi.ac.uk/ebisearch/ws/rest -debugLevel 1 | grep -q '14' ;  [ $? -eq 0 ]  || exit 1
-#  - chmod +x ./java/javaTestCases.sh
-#  - ./java/javaTestCases.sh
-#  - java  -classpath java/lib/*:java/EBeye_JAXRS.jar uk.ac.ebi.webservices.jaxrs.EBeyeClient --getNumberOfResults hgnc human --endpoint http://www.ebi.ac.uk/ebisearch/ws/rest -debugLevel 1 | grep -q '15' ; echo $?
-#  - java -classpath "java/lib/*" -Djava.ext.dirs=java/lib/ -jar java/EBeye_JAXRS.jar --getNumberOfResults hgnc human --endpoint http://www.ebi.ac.uk/ebisearch/ws/rest -debugLevel 1 | grep -q '15' ; echo $?
-#  - java -Djava.ext.dirs=java/lib/* -jar java/EBeye_JAXRS.jar
-#  - java  -classpath java/lib/*:java/EBeye_JAXRS.jar uk.ac.ebi.webservices.jaxrs.EBeyeClient
+
+
+test_perl_client:
+  image: perl:latest
+  stage: test
+  script:
+  - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
