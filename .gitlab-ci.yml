@@ -11,5 +11,7 @@ test_java_client:
 test_perl_client:
   image: perl:latest
   stage: test
+  before_script:
+  - perl -MCPAN -e 'install Bundle::LWP'
   script:
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
