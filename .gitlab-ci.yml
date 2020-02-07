@@ -12,8 +12,14 @@ test_perl_client:
   image: perl:latest
   stage: test
   before_script:
-#  - perl -MCPAN -e 'install Bundle::LWP'
   - perl -MCPAN -e 'install XML::Simple'
   - perl -MCPAN -e 'install LWP::Protocol::https'
   script:
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
+
+
+test_python_client:
+  image: python:latest
+  stage: test
+  script:
+    -  python python/ebeye_requests.py getEntries uniprot "Q9GZU1,P80567"  "acc,organism_scientific_name" | grep -c 'Q9GZU1\|D6W647\|Homo sapiens\|Bacillus cereus'; [ $? -eq 1 ]  || exit 1
