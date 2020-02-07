@@ -12,7 +12,8 @@ test_perl_client:
   image: perl:latest
   stage: test
   before_script:
-  - perl -MCPAN -e 'install Bundle::LWP'
+#  - perl -MCPAN -e 'install Bundle::LWP'
   - perl -MCPAN -e 'install XML::Simple'
+  - perl -MCPAN -e 'install LWP::Protocol::https'
   script:
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
