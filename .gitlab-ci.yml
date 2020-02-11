@@ -24,4 +24,5 @@ test_python_client:
   before_script:
   - pip install requests
   script:
+  - python python/ebeye_requests.py getNumberOfResults uniprot VAV_HUMAN | grep -q '1';[ $? -eq 0 ]  || exit 1
   - python python/ebeye_requests.py getEntries uniprot "Q9GZU1,P80567"  "acc,organism_scientific_name" | echo $(grep -c 'Q9GZU1\|D6W647\|Homo sapiens\|Bacillus cereus') | grep -q '4';[ $? -eq 0 ]  || exit 1
