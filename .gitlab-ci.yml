@@ -1,5 +1,5 @@
 variables:
-  GETDOMAINSREFERENCEDINENTRY : "atlas-genes: 1\|emblrelease_standard: 9\|reactome: 45\|pdbe: 6\|uniprot: 4"
+  GETDOMAINSREFERENCEDINENTRY : "atlas-genes: 1|emblrelease_standard: 9|reactome: 45|pdbe: 6|uniprot: 4"
 stages:
   - test
 
