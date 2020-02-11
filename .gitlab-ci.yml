@@ -6,6 +6,8 @@ test_java_client:
   stage: test
   script:
   - java -classpath "java/lib/*:java/jar/eby-client.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getNumberOfResults hgnc human --endpoint http://www.ebi.ac.uk/ebisearch/ws/rest -debugLevel 1 | grep -q '14' ;  [ $? -eq 0 ]  || exit 1
+  - java -classpath "java/lib/*:java/jar/eby-client.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getResults ensembl_gene tpi name | echo $(grep -c 'Tpi-rs10\|Tpi-rs11\|Tpi-rs9\|Tpi-rs5') | grep -q '7';[ $? -eq 0 ]  || exit 1
+  - java -classpath "java/lib/*:java/jar/eby-client.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getDomainsReferencedInDomain hgnc | echo $(grep -c 'coding_release\|ensembl_gene\|rnacentral\|uniprot\|europepmc') | grep -q '5';[ $? -eq 0 ]; || exit 1
 
 
 test_perl_client:
@@ -15,7 +17,9 @@ test_perl_client:
   - perl -MCPAN -e 'install XML::Simple'
   - perl -MCPAN -e 'install LWP::Protocol::https'
   script:
+  - ./perl/ebeye_lwp.pl getNumberOfResults ensembl_gene tpi| grep -q '37';[ $? -eq 0 ]  || exit 1
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
+  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c 'atlas-genes: 1\|emblrelease_standard: 9\|reactome: 45\|pdbe: 6\|uniprot: 4') | grep -q '5';[ $? -eq 0 ]; || exit 1
 
 
 test_python_client:
@@ -24,5 +28,5 @@ test_python_client:
   before_script:
   - pip install requests
   script:
-  - python python/ebeye_requests.py getNumberOfResults uniprot VAV_HUMAN | grep -q '2';[ $? -eq 0 ]  || exit 1
+  - python python/ebeye_requests.py getNumberOfResults uniprot VAV_HUMAN | grep -q '1';[ $? -eq 0 ]  || exit 1
   - python python/ebeye_requests.py getEntries uniprot "Q9GZU1,P80567"  "acc,organism_scientific_name" | echo $(grep -c 'Q9GZU1\|D6W647\|Homo sapiens\|Bacillus cereus') | grep -q '4';[ $? -eq 0 ]  || exit 1
