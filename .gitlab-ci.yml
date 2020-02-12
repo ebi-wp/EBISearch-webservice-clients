@@ -24,7 +24,7 @@ test_perl_client:
   - "reactome='reactome: 45'"
   - "pdbe='pdbe: 6'"
   - "uniprot='uniprot: 4'"
-  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c '$atlas_genes \| $emblrelease_standard \| $reactome \| $pdbe \| $uniprot'); | grep -q '5'; [ $? -eq 0 ] || exit 1
+  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c $atlas_genes\|$emblrelease_standard\|$reactome\|$pdbe\|$uniprot); | grep -q '5'; [ $? -eq 0 ] || exit 1
 
 
 test_python_client:
