@@ -1,5 +1,3 @@
-variables:
-  GETDOMAINSREFERENCEDINENTRY : "$(grep -c atlas-genes: 1|emblrelease_standard: 9|reactome: 45|pdbe: 6|uniprot: 4)"
 stages:
   - test
 
@@ -9,7 +7,7 @@ test_java_client:
   script:
   - java -classpath "java/lib/*:java/jar/eby-client.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getNumberOfResults hgnc human --endpoint http://www.ebi.ac.uk/ebisearch/ws/rest -debugLevel 1 | grep -q '14' ;  [ $? -eq 0 ]  || exit 1
   - java -classpath "java/lib/*:java/jar/eby-client.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getResults ensembl_gene tpi name | echo $(grep -c 'Tpi-rs10\|Tpi-rs11\|Tpi-rs9\|Tpi-rs5') | grep -q '7';[ $? -eq 0 ]  || exit 1
-  - java -classpath "java/lib/*:java/jar/eby-client.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getDomainsReferencedInDomain hgnc | echo $(grep -c 'coding_release\|ensembl_gene\|rnacentral\|uniprot\|europepmc') | grep -q '5';[ $? -eq 0 ]; || exit 1
+  - java -classpath "java/lib/*:java/jar/eby-client.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getDomainsReferencedInDomain hgnc | echo $(grep -c 'coding_release\|ensembl_gene\|rnacentral\|uniprot\|europepmc') | grep -q '5';[ $? -eq 0 ] || exit 1
 
 
 test_perl_client:
@@ -21,7 +19,7 @@ test_perl_client:
   script:
   - ./perl/ebeye_lwp.pl getNumberOfResults ensembl_gene tpi| grep -q '37';[ $? -eq 0 ]  || exit 1
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
-  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo ${GETDOMAINSREFERENCEDINENTRY} | grep -q '5'; [ $? -eq 0 ] || exit 1
+  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c '"atlas-genes: 1"\|"emblrelease_standard: 9"\|"reactome: 45"\|"pdbe: 6"\|"uniprot: 4"') | grep -q '5'; [ $? -eq 0 ] || exit 1
 
 
 test_python_client:
