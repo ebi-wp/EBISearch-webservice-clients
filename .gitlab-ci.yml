@@ -19,7 +19,7 @@ test_perl_client:
   script:
   - ./perl/ebeye_lwp.pl getNumberOfResults ensembl_gene tpi| grep -q '37';[ $? -eq 0 ]  || exit 1
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
-  - "compare_string='atlas_genes: 1''\|''emblrelease_standard: 9''\|''reactome: 45''\|''pdbe: 6''\|''uniprot: 4'"
+  - "compare_string='atlas_genes: 1''|''emblrelease_standard: 9''|''reactome: 45''|''pdbe: 6''|''uniprot: 4'"
   - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c $compare_string); | grep -q '5'; [ $? -eq 0 ] || exit 1
 
 
