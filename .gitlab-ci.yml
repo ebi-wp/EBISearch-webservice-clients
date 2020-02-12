@@ -1,5 +1,3 @@
-variables:
-  'STATUS_ID=$(grep -c "atlas-genes: 1" \| "emblrelease_standard: 9" \| "reactome: 45" \| "pdbe: 6" \| "uniprot: 4")'
 stages:
   - test
 
@@ -21,7 +19,12 @@ test_perl_client:
   script:
   - ./perl/ebeye_lwp.pl getNumberOfResults ensembl_gene tpi| grep -q '37';[ $? -eq 0 ]  || exit 1
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
-  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $STATUS_ID | grep -q '5'; [ $? -eq 0 ] || exit 1
+  - "atlas_genes='atlas_genes: 1'"
+  - "emblrelease_standard='emblrelease_standard: 9'"
+  - "reactome='reactome: 45'"
+  - "pdbe='pdbe: 6'"
+  - "uniprot='uniprot: 4'"
+  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c '$atlas_genes \| $emblrelease_standard \| $reactome \| $pdbe \| $uniprot'); | grep -q '5'; [ $? -eq 0 ] || exit 1
 
 
 test_python_client:
