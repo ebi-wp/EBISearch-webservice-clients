@@ -51,7 +51,7 @@ An example test for getting domain details for chebi domain using Python client:
 python python/ebeye_requests.py getDomainDetails chebi
 ```
 
-### Java clients [![java](https://img.shields.io/badge/java-openJDK8.svg?style=flat)]()
+### Java clients [![java](https://img.shields.io/badge/java-openJDK8-blue.svg?style=flat)]()
 
 In order to run Java clients, OpenJDK 8 needs to installed. *Note Java 9 and above are currently not supported.
 
