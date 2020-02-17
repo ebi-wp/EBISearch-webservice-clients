@@ -6,6 +6,12 @@ EBI's EBISearch Web Service tools via REST and SOAP APIs.
 The RESTful API interface for the Job Dispatcher Web Services is available at
 [https://www.ebi.ac.uk/ebisearch/apidoc.ebi](https://www.ebi.ac.uk/ebisearch/apidoc.ebi)
 
+EBISearch application is available at
+[https://www.ebi.ac.uk/ebisearch](https://www.ebi.ac.uk/ebisearch)
+
+EBISearch Help & Documentation is available at
+[Help & Documentation](https://www.ebi.ac.uk/ebisearch/documentation.ebi)
+
 A collection of REST sample clients for the EBI Job Dispatcher Web Services in Python, Perl and Java.
 
 
@@ -61,3 +67,8 @@ An example test for getting domain details for chebi domain using Python client:
 ```bash
 java -Djava.ext.dirs=java/lib/ -jar java/jar/EBeye_JAXRS.jar --getDomainDetails chebi
 ```
+
+## Contact and Support
+
+If you have any problems, suggestions or comments for our services please
+contact us via [EBI Support](https://www.ebi.ac.uk/support/index.php?query=WebServices).
