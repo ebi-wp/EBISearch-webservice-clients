@@ -18,9 +18,9 @@ or clone the repository:
 git clone https://github.com/ebi-wp/EBISearch-webservice-clients.git
 ```
 
-### Perl clients [![perl](https://img.shields.io/badge/perl-5.22.0+-blue.svg?style=flat)]()
+### Perl clients [![perl](https://img.shields.io/badge/perl-blue.svg?style=flat)]()
 
-In order to run Perl clients, Perl (tested version 5.22.0) needs to installed as well as Perl dependencies.
+In order to run Perl clients, Perl needs to installed as well as Perl dependencies.
 
 Install dependencies with:
 ```bash
@@ -36,10 +36,9 @@ An example test for getting domain details for chebi domain using Perl client:
 perl ./perl/ebeye_lwp.pl  getDomainDetails chebi
 ```
 
-### Python clients [![python](https://img.shields.io/badge/python-3.5+-blue.svg?style=flat)]()
+### Python clients [![python](https://img.shields.io/badge/python-blue.svg?style=flat)]()
 
-This python client is working fine with Python2 and 3 and it requires the installation of requests dependency only
-In order to run Python clients, Perl (tested version 3.6.5) needs to installed as well as Python dependencies.
+In order to run Python clients, Python needs to installed as well as Python dependencies.
 
 Install dependencies with:
 ```bash
@@ -52,10 +51,9 @@ An example test for getting domain details for chebi domain using Python client:
 python python/ebeye_requests.py getDomainDetails chebi
 ```
 
-### Java clients [![java](https://img.shields.io/badge/java-1.8-blue.svg?style=flat)]()
+### Java clients [![java](https://img.shields.io/badge/java-openJDK8.svg?style=flat)]()
 
-In order to run Java clients, Java (tested version 1.8.0_161") as well as ant (tested version 1.10.5),
-needs to installed. *Note Java 9 and above are currently not supported.
+In order to run Java clients, OpenJDK 8 needs to installed. *Note Java 9 and above are currently not supported.
 
 The clients are provided here as self-contained JAR files. (The source code is available in the [EBeye_JAXRS-source](https://github.com/ebi-wp/webservice-clients/blob/master/java/jar/EBeye_JAXRS-source.jar))
 An example test for getting domain details for chebi domain using Python client:
