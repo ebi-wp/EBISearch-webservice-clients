@@ -1,18 +1,18 @@
 # EBISearch-webservice-clients
 
 This repository provides a collection of Sample Web Service Clients to consume
-EBI's EBISearch Web Service tools via REST and SOAP APIs.
+EBI's EBI Search Web Service tools via REST APIs.
 
-The RESTful API interface for the EBISearch Web Services is available at
+The RESTful API interface for the EBI Search Web Services is available at
 [https://www.ebi.ac.uk/ebisearch/apidoc.ebi](https://www.ebi.ac.uk/ebisearch/apidoc.ebi)
 
-EBISearch application is available at
+EBI Search application is available at
 [https://www.ebi.ac.uk/ebisearch](https://www.ebi.ac.uk/ebisearch)
 
-EBISearch Help & Documentation is available at
+EBI Search Help & Documentation is available at
 [Help & Documentation](https://www.ebi.ac.uk/ebisearch/documentation.ebi)
 
-A collection of REST sample clients for the EBISearch Web Services in Python, Perl and Java.
+A collection of REST sample clients for the EBI Search Web Services in Python, Perl and Java.
 
 
 ## Running the clients
