@@ -20,7 +20,7 @@ test_perl_client:
   script:
   - ./perl/ebeye_lwp.pl getNumberOfResults ensembl_gene tpi| grep -q '36';[ $? -eq 0 ]  || exit 1
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
-  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c 'atlas-genes\|emblrelease_standard\|reactome\|pdbe\|uniprot') | grep -q '5'; [ $? -eq 0 ] || exit 1
+  - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c 'atlas-genes\|emblstandard\|reactome\|pdbe\|uniprot') | grep -q '5'; [ $? -eq 0 ] || exit 1
   - ./perl/ebeye_lwp.pl getAutoComplete uniprot vav | echo $(grep -c 'vav2_human\|vav2_mouse\|vav3_human\|vav3_mouse\|vav_bovin\|vav_caeel\|vav_drome\|vav_human\|vav_mouse\|vav_rat') | grep -q '10'; [ $? -eq 0 ] || exit 1
 
 
