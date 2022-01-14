@@ -1,5 +1,7 @@
 # EBISearch-webservice-clients
 
+**Note : This project(web service clients) is not being updated and maintained for long time.Instead of soap clients we recommend to use our RESFUL webservices which are up-to-date and maintained**
+
 This repository provides a collection of Sample Web Service Clients to consume
 EBI's EBI Search Web Service tools via REST APIs.
 
