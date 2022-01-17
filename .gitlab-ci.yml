@@ -18,7 +18,7 @@ test_perl_client:
   - perl -MCPAN -e 'install XML::Simple'
   - perl -MCPAN -e 'install LWP::Protocol::https'
   script:
-  - ./perl/ebeye_lwp.pl getNumberOfResults ensembl_gene tpi| grep -q '36';[ $? -eq 0 ]  || exit 1
+  - ./perl/ebeye_lwp.pl getNumberOfResults ensembl_gene tpi| grep -q '37';[ $? -eq 0 ]  || exit 1
   - ./perl/ebeye_lwp.pl getFacetedResults hgnc human "id" | grep -q 'HGNC:20981' ;  [ $? -eq 0 ]  || exit 1
   - ./perl/ebeye_lwp.pl getDomainsReferencedInEntry ensembl_gene ENSG00000141968 | echo $(grep -c 'atlas-genes\|emblstandard\|reactome\|pdbe\|uniprot') | grep -q '5'; [ $? -eq 0 ] || exit 1
   - ./perl/ebeye_lwp.pl getAutoComplete uniprot vav | echo $(grep -c 'vav2_human\|vav2_mouse\|vav3_human\|vav3_mouse\|vav_bovin\|vav_caeel\|vav_drome\|vav_human\|vav_mouse\|vav_rat') | grep -q '10'; [ $? -eq 0 ] || exit 1
@@ -33,4 +33,4 @@ test_python_client:
   - python python/ebeye_requests.py getNumberOfResults uniprot VAV_HUMAN | grep -q '1';[ $? -eq 0 ]  || exit 1
   - python python/ebeye_requests.py getEntries uniprot "Q9GZU1,P80567"  "acc,organism_scientific_name" | echo $(grep -c 'Q9GZU1\|D6W647\|Homo sapiens\|Bacillus cereus') | grep -q '4';[ $? -eq 0 ]  || exit 1
   - python python/ebeye_requests.py getReferencedEntries ensembl_gene ENSG00000141968 uniprot acc | echo $(grep -c 'Q96D37\|P15498\|B4DVK9\|M0QXX6\|Q15860\|A0A0A0MR07\|F5H5P4') | grep -q '7';[ $? -eq 0 ]  || exit 1
-  - python python/ebeye_requests.py getMoreLikeThis ensembl_gene ENSG00000141968 "id,name" | echo $(grep -c 'ENSDLAG00005018480\|VAV1\|ENSGAGG00000010633\|ENSEASG00005011821\|ENSHGLG00100005978\|ENSGGOG00000012257\|ENSSOCG00000008170') | grep -q '10';[ $? -eq 0 ]  || exit 1
+  - python python/ebeye_requests.py getMoreLikeThis ensembl_gene ENSG00000141968 "id,name" | echo $(grep -c 'ENSDLAG00005018480\|VAV1\|ENSGAGG00000010633\|ENSEASG00005011821\|ENSHGLG00100005978\|ENSGGOG00000012257\|ENSSOCG00000008170') | grep -q '11';[ $? -eq 0 ]  || exit 1
