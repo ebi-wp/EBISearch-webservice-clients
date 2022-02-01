@@ -74,3 +74,8 @@ java -Djava.ext.dirs=java/lib/ -jar java/jar/EBeye_JAXRS.jar --getDomainDetails 
 
 If you have any problems, suggestions or comments for our services please
 contact us via [EBI Support](https://www.ebi.ac.uk/support/index.php?query=WebServices).
+
+## License
+The European Bioinformatics Institute - [EMBL-EBI](https://www.ebi.ac.uk/), is an Intergovernmental Organization which, as part of the European Molecular Biology Laboratory family, focuses on research and services in bioinformatics.  
+
+Apache License 2.0. See [license](LICENSE) for details.
