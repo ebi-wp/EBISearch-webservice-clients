@@ -8,7 +8,7 @@ test_java_client:
   - java -classpath "java/lib/*:java/jar/EBeye_JAXRS.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getNumberOfResults hgnc human --endpoint http://www.ebi.ac.uk/ebisearch/ws/rest -debugLevel 1 | grep -q '14' ;  [ $? -eq 0 ]  || exit 1
   - java -classpath "java/lib/*:java/jar/EBeye_JAXRS.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getResults ensembl_gene tpi name | echo $(grep -c 'Tpi-rs10\|Tpi-rs11\|Tpi-rs9\|Tpi-rs5') | grep -q '7';[ $? -eq 0 ]  || exit 1
   - java -classpath "java/lib/*:java/jar/EBeye_JAXRS.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getDomainsReferencedInDomain hgnc | echo $(grep -c 'coding\|ensembl_gene\|uniprot\|europepmc') | grep -q '6';[ $? -eq 0 ] || exit 1
-  - java -classpath "java/lib/*:java/jar/EBeye_JAXRS.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getTopTerms pride data_protocol | echo $(grep -c 'and\|the\|were\|was\|of\|using\|with\|for\|to\|database') | grep -q '10';[ $? -eq 0 ] || exit 1
+  - java -classpath "java/lib/*:java/jar/EBeye_JAXRS.jar" uk.ac.ebi.webservices.jaxrs.EBeyeClient --getTopTerms pride data_protocol | echo $(grep -c 'and\|the\|were\|was\|of\|using\|with\|for\|to\|database') | grep -q '15';[ $? -eq 0 ] || exit 1
 
 
 test_perl_client:
@@ -33,4 +33,4 @@ test_python_client:
   - python python/ebeye_requests.py getNumberOfResults uniprot VAV_HUMAN | grep -q '1';[ $? -eq 0 ]  || exit 1
   - python python/ebeye_requests.py getEntries uniprot "Q9GZU1,P80567"  "acc,organism_scientific_name" | echo $(grep -c 'Q9GZU1\|D6W647\|Homo sapiens\|Bacillus cereus') | grep -q '4';[ $? -eq 0 ]  || exit 1
   - python python/ebeye_requests.py getReferencedEntries ensembl_gene ENSG00000141968 uniprot acc | echo $(grep -c 'Q96D37\|P15498\|B4DVK9\|M0QXX6\|Q15860\|A0A0A0MR07\|F5H5P4') | grep -q '7';[ $? -eq 0 ]  || exit 1
-  - python python/ebeye_requests.py getMoreLikeThis ensembl_gene ENSG00000141968 "id,name" | echo $(grep -c 'ENSDLAG00005018480\|VAV1\|ENSGAGG00000010633\|ENSEASG00005011821\|ENSHGLG00100005978\|ENSGGOG00000012257\|ENSSOCG00000008170') | grep -q '11';[ $? -eq 0 ]  || exit 1
+  - python python/ebeye_requests.py getMoreLikeThis ensembl_gene ENSG00000141968 "id,name" | echo $(grep -c 'ENSDLAG00005018480\|VAV1\|ENSGAGG00000010633\|ENSEASG00005011821\|ENSHGLG00100005978\|ENSGGOG00000012257\|ENSSOCG00000008170') | grep -q '12';[ $? -eq 0 ]  || exit 1
